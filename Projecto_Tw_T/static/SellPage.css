@@ -62,7 +62,7 @@
     cursor: pointer;
 }
 .btnClose{
-    background-color: red;
+    background-color: blue;
 }
 .btnopn{
     display: flex;
