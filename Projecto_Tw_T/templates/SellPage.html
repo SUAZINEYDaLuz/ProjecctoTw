@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block body  %}
+ <div class="background">
+        <nav class="navbar">
+            <img class="logo" src="/static/images/logo2.png" alt="aqui tem logo">
+            <div class="pesquisa">
+                <input class="srch" type="search" name=" " placeholder="  Search for an event or product">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi11" viewBox="0 0 16 16">
+                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </div>
+
+            <ul class="but">
+                <li><a href="#">Help</a> </li>
+                <li><a href="{{url_for('views.SellPage')}}">Sell</a></li>
+                <li><a href="#">Buy</a> </li>
+                <li><a href="#">Register</a> </li>
+            </ul>
+        </nav>
+
+<form action="/sell/" method="POST" enctype="multipart/form-data">
+    <div class="layout">
+         <h1> Publică un anunț</h1>
+         <h2>Adaugă titlul*</h2>
+           <input class="inputitlu" type="search" name="titlu" placeholder=" Iphone, Bicicleta, Calculator,...">
+        <h2>Alegeți o categorie</h2>
+        <div class="selecionar">
+            <select name="categoria" id="format">
+                <option selected disabled>Alegeți o categorie</option>
+                <option value="Eletronice"> Eletronice</option>
+                <option value="Piese auto"> Piese auto</option>
+                <option value="Sport Timp Liber"> Sport Timp Liber</option>
+                <option value="Auto si Moto"> Auto si Moto</option>
+                <option value="Animalele de Companie"> Animalele de Companie</option>
+                <option value="Moda si Frumosete"> Moda si Frumosete</option>
+
+            </select>
+
+        </div>
+
+            <div class="Cfile">
+                <h2>Imagini</h2>
+                <p>Aceasta va fi imaginea principală a anunțului tău. Glisează și fixează imaginile în ordinea dorită.</p>
+                <input class="upload_image"  id="upload_costum" type="file" name="image1" accept="image/*" >
+                <label for="upload_costum" class="upload_label">
+                    <i class="fas fa-cloud-upload-alt"></i>
+    <!--                    <p class="drag_tex">Drag & Drop To Upload File</p>-->
+    <!--                    <button  class="choose_file">Choose a file</button>-->
+
+                    </label>
+    <!--                 <input class="upload-image" type="file" name="image2" accept="image/*" >-->
+    <!--                 <input class="upload-image" type="file"  name="image3" accept="image/*" >-->
+    <!--                 <input class="upload-image" type="file" name="image4" accept="image/*" >-->
+            </div>
+        <div class="descricao">
+           <textarea name="descricao" style="resize:none" rows="10" cols="20" placeholder=" scrieti despre proiectul vostru"></textarea>
+        </div>
+
+        <div class="emailadress">
+            <h3>Enter email Adress</h3>
+            <input type="text" name="email" placeholder="Enter adressa de email">
+        </div>
+       <button class="enviar" type="submit">Post anuntu</button>
+    </div>
+
+</form>
+<form>
+
+
+
+
+</form>
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        const modal = document.querySelector('.modal-container')
+
+
+        function openModal(){
+            modal.classList.add('active')
+
+        }
+        function closeModal(){
+            modal.classList.remove('active')
+        }
+    </script>
+
+
+{% endblock %}

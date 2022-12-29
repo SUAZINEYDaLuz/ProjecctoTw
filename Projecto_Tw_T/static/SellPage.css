@@ -1,0 +1,150 @@
+
+.layout{
+    display: flex;
+    /*background-color: red;*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    line-height: 60px;
+    font-family: Arial;
+
+}
+.modal-container{
+    width: 100vw;
+    position: fixed;
+    top: 30px;
+    display: none;
+    z-index: 999;
+    justify-content: center;
+     list-style: none;
+    flex-direction: row;
+}
+.modal{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: #b899a6;
+    border-radius: 10px;
+    width: 50%;
+
+
+    color: black;
+}
+
+.active{
+    display: flex;
+}
+.active .modal{
+    animation: modal .4s;
+}
+@keyframes modal {
+    from{
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+}
+.btns{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.btns button{
+    font-size: medium;
+    padding: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.btnClose{
+    background-color: red;
+}
+.btnopn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.dvCategoria{
+    background-color: midnightblue;
+}
+.btnCategoria{
+
+}
+.popup div {
+    display: flex;
+    width: 109px;
+    height: 70px;
+    background-color: #736cb8;
+}
+.emailadress input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 300px;
+
+}
+.inputitlu{
+    border: none;
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
+    font-size: 15px;
+    color: #929292;
+    padding: 7px;
+}
+
+.selecionar select{
+    border: none;
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
+    font-size: 15px;
+    color: #929292;
+    padding: 7px;
+
+}
+.Cfile{
+    border: 3px;
+}
+.upload_label{
+    /*position: fixed;*/
+    width: 400px;
+    height: 500px;
+    border :1px #139CFF;
+
+}
+
+
+.descricao textarea{
+    padding: 10px;
+    font-size: 15px;
+    color: #818181;
+    width: 450px;
+    border-radius: 10px;
+}
+.emailadress input{
+    padding: 7px;
+    border: none;
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    color: #818181 ;
+}
+.enviar{
+    padding: 10px;
+    border-radius: 12px;
+    background-color: white;
+    border: 2px solid #4CAF50;
+}
+.Cfile input{
+    display: flex;
+    align-items: center;
+    margin-left: 40%;
+    margin-bottom: 10px;
+}
