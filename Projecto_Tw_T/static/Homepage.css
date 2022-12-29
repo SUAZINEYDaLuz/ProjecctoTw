@@ -38,24 +38,29 @@ img{
     border-bottom: 0.4px solid  #c9d5c9;
     height: 10%;
     width: 100%;
+    background-color: #87CEFA;
+    color: white;
+
 }
 .navbar ul{
     display: flex;
     flex-direction: row;
     list-style: none;
     align-items: center;
+    color: white;
 }
 
 .navbar ul li{
     margin-left: 30px;
     margin-right: 30px;
+    color: white;
 }
 .but li :hover{
     background-color: #2691d9;
 }
 .navbar ul li a{
     text-decoration: none;
-    color: #494949;
+    color: white;
 }
 .srch {
     width: 250px;
@@ -107,10 +112,11 @@ img{
 }
 .filtro1{
     width: 90%;
-    background-color: #FFF0F5;
+    background-color: #87CEFA;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
+    color: white;
 }
 .filtro1 h1{
     display: flex;
@@ -124,7 +130,8 @@ img{
     width: 90%;
     height: 170px;
     margin-left: 0;
-    background-color: #FFF0F5;
+    background-color: #87CEFA;
+    color: white;
 }
 .filtro2 h1{
     display: flex;
@@ -205,9 +212,10 @@ img{
 .detalhe_produto{
 
     height: 30%;
-    background-color: #FFF0F5;
+    background-color: #87CEFA;
     width: 300px;
     border-radius: 6px;
+    color: white;
 
 }
 .detalhe_produto h1{
@@ -238,6 +246,7 @@ img{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #87CEFA;
+    color: white;
 }
 
