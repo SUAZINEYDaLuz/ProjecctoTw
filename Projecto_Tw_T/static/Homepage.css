@@ -241,6 +241,25 @@ img{
 
 }
 
+
+.btnFavorite{
+    margin-left: 85%;
+    margin-top: 5px;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    outline: none;
+    color: grey;
+
+}
+
+.btnFavorite i:hover{
+    cursor: pointer;
+}
+
+
+
+
 .footer_body{
     display: flex;
     flex-direction: column;

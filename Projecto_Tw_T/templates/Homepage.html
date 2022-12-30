@@ -3,55 +3,56 @@
 
     <div class="background">
         <nav class="navbar">
-            <img class="logo" src="/static/images/logo2.png"   alt="aqui tem logo">
+            <img class="logo" src="/static/images/logo2.png" alt="aqui tem logo">
             <div class="pesquisa">
                 <input class="srch" type="search" name=" " placeholder="  Search for an event or product">
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi11" viewBox="0 0 16 16">
-                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi11"
+                     viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
             </div>
 
             <ul class="but">
-                <li><a href="#">Help</a> </li>
-                <li><a href="{{url_for('views.SellPage')}}">Sell</a></li>
-                <li><a href="#">Buy</a> </li>
-                <li><a href="{{url_for('auth.login')}}">login</a> </li>
+                <li><a href="#">Help</a></li>
+                <li><a href="{{ url_for('views.SellPage') }}">Sell</a></li>
+                <li><a href="#">Buy</a></li>
+                <li><a href="{{ url_for('auth.login') }}">login</a></li>
             </ul>
         </nav>
-{#        <---------------------------main------------------------------>#}
+        {#        <---------------------------main------------------------------>#}
         <section class="filtro">
             <div class="left">
-                <h1 class="left-title"> Filtre  </h1>
+                <h1 class="left-title"> Filtre </h1>
                 <div class="filtro1">
                     <h1 class="filtro1-title"> Categoria</h1>
                     <form>
-                          <input type="checkbox" id="Eletronice" name="vehicle1" value="Bike">
-                          <label for="Eletronice"> Eletronice</label><br>
-                          <input type="checkbox" id="Piese auto" name="vehicle2" value="Car">
-                          <label for="Piese auto"> Piese auto</label><br>
-                          <input type="checkbox" id="Sport si timp liber" name="vehicle3" value="Boat">
-                          <label for="Sport si timp liber"> Sport si timp liber</label><br>
-                          <input type="checkbox" id="Auto si Moto" name="vehicle3" value="Boat">
-                          <label for="Auto si Moto"> Auto si Moto</label><br>
-                          <input type="checkbox" id="Animalele de Companie" name="vehicle3" value="Boat">
-                          <label for="Animalele de Companie"> Animalele de Companie</label><br>
-                          <input type="checkbox" id="Moda si Frumosete" name="vehicle3" value="Boat">
-                          <label for="Moda si Frumosete"> Moda si Frumosete</label>
+                        <input type="checkbox" id="Eletronice" name="vehicle1" value="Bike">
+                        <label for="Eletronice"> Eletronice</label><br>
+                        <input type="checkbox" id="Piese auto" name="vehicle2" value="Car">
+                        <label for="Piese auto"> Piese auto</label><br>
+                        <input type="checkbox" id="Sport si timp liber" name="vehicle3" value="Boat">
+                        <label for="Sport si timp liber"> Sport si timp liber</label><br>
+                        <input type="checkbox" id="Auto si Moto" name="vehicle3" value="Boat">
+                        <label for="Auto si Moto"> Auto si Moto</label><br>
+                        <input type="checkbox" id="Animalele de Companie" name="vehicle3" value="Boat">
+                        <label for="Animalele de Companie"> Animalele de Companie</label><br>
+                        <input type="checkbox" id="Moda si Frumosete" name="vehicle3" value="Boat">
+                        <label for="Moda si Frumosete"> Moda si Frumosete</label>
                     </form>
                 </div>
 
                 <div class="filtro2">
-                    <h1> <strong>Pretul</strong></h1>
+                    <h1><strong>Pretul</strong></h1>
                     <form>
-                          <input type="checkbox" id="pret1" name="vehicle1" value="Bike">
-                          <label for="pret1"> 0-100 lei</label><br>
-                          <input type="checkbox" id="pret2" name="vehicle2" value="Car">
-                          <label for="pret2"> 200-500 lei</label><br>
-                          <input type="checkbox" id="pretul3" name="vehicle3" value="Boat">
-                          <label for="pretul3"> 600-1000 lei</label><br>
-                          <input type="checkbox" id="pretul4" name="vehicle3" value="Boat">
-                          <label for="pretul4"> 1000-5000 lei</label><br>
+                        <input type="checkbox" id="pret1" name="vehicle1" value="Bike">
+                        <label for="pret1"> 0-100 lei</label><br>
+                        <input type="checkbox" id="pret2" name="vehicle2" value="Car">
+                        <label for="pret2"> 200-500 lei</label><br>
+                        <input type="checkbox" id="pretul3" name="vehicle3" value="Boat">
+                        <label for="pretul3"> 600-1000 lei</label><br>
+                        <input type="checkbox" id="pretul4" name="vehicle3" value="Boat">
+                        <label for="pretul4"> 1000-5000 lei</label><br>
 
                     </form>
                 </div>
@@ -59,16 +60,18 @@
 
             <div class="rigth">
                 {% for row in minhatab %}
-                <div class="product">
-                    <div class="imagem_produto">
-                         <img class="Imagem_produto" src="static/images/{{row.image}}" width="300px" height="300px">
-                    </div>
-                    <div class="detalhe_produto">
-                        <h1 class="p_name">{{row.titlu}}</h1>
-                        <h1 class="p_price">{{ row.descricao }}</h1>
-                    </div>
+                    <div class="product">
+                        <div class="imagem_produto">
+                            <button onclick="" id="btnh1" class="btnFavorite"><i class="fas fa-heart"></i></button>
+                            <img class="Imagem_produto" src="static/images/{{ row.image }}" width="300px"
+                                 height="300px">
+                        </div>
+                        <div class="detalhe_produto">
+                            <h1 class="p_name">{{ row.titlu }}</h1>
+                            <h1 class="p_price">{{ row.descricao }}</h1>
+                        </div>
 
-                </div>
+                    </div>
                 {% endfor %}
             </div>
 
