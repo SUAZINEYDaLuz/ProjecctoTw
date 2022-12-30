@@ -41,7 +41,10 @@ def Send_Data():
         descricao = request.form['descricao']
         email = request.form['email']
         image = save_images(request.files.get('image1'))
-        new_item = tabelatw(titlu=titlu, categoria=categoria, descricao=descricao, email=email,image=image)
+        lance = request.form['Lance']
+        datalance = request.form['dataLeilao']
+
+        new_item = tabelatw(titlu=titlu, categoria=categoria, descricao=descricao, email=email,image=image,lance=lance ,datalance = datalance)
         db.session.add(new_item)
         db.session.commit()
     return render_template('Homepage.html')

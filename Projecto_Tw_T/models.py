@@ -17,3 +17,6 @@ class tabelatw(db.Model, UserMixin):
     descricao = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False)
     image = db.Column(db.String(120), default='image.jpg')
+    lance = db.Column(db.String(255), nullable=False)
+    datalance = db.Column(db.DateTime)
+
