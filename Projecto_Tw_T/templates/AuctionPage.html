@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% block css %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='auction.css')}}"> {% endblock %}
+{#{% block javascript %}<script type="text/javascript" src="Auction-page.js"></script>{% endblock %}#}
+{% block body %}
+        <header>
+            <nav class="navbar">
+{#            <a href="{{ url_for('views.Homepage') }}"><img class="logo" src="/static/images/logo2.png" alt="aqui tem logo"></a>#}
+            <div class="pesquisa">
+                <input class="srch" type="search" name=" " placeholder="  Search for an event or product">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi11"
+                     viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </div>
+
+            <ul class="but">
+                <li><a href="#">Help</a></li>
+                <li><a href="{{ url_for('views.SellPage') }}">Sell</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        </header>
+
+
+
+    <main class="main-content">
+        <div class="main-div">
+            <div class="produto-container">
+
+                <div class="dados-produto">
+
+                        <img class="imagem-produto" src="/static/images/KRmiuGYLhsfhDA.png">
+                        <div class="detalhe-leilao">
+                          <p>Nome: Toyota Supra Mk4 </p>
+                        <p>Estado: Ca Nou</p>
+                        <p>Preco: 20000$</p>
+                        <p>Detalhes: Ester carro foi usando apenas durante um ano. Tem pouca kilometragem e podem ser feito upgrades nele</p>
+                        </div>
+
+                </div>
+                <div class="lance-produto">
+                <form method="post" name="darlance">
+                   <div class="tempo">Timp rămas : <p id="countdown"> </p></div>
+                    <div class="lista-lance" id="lista-lance">
+
+
+                    </div>
+                    <div class="dar-lance">
+                        <input type="number" id="input-value" placeholder="Scrieți oferta">
+                        <button type="button" name="lance" id="make-lance">
+                            <i class="fa-solid fa-gavel"></i> Faceți o ofertă
+                        </button>
+                        <input id="u_nome" name="_uname" type="text" placeholder="">
+                    </div>
+                </form>
+                </div>
+            </div>
+
+
+              <div id="popup">Parabéns, você ganhou o leilão!
+                <button id="close-button">X</button>
+              </div>
+
+        </div>
+    </main>
+
+
+
+    <footer class="footer_body">
+    <div class="footer-div">
+         <h1>
+            Criando por Suaziney si Elber
+        </h1>
+        <h2>
+            Com apoio de UVT
+        </h2>
+    </div>
+
+    </footer>
+
+
+    <script>
+{#const startMinute = 60;#}
+{#let time = startMinute * 60;#}
+{#const countdownEl = document.getElementById("countdown")#}
+{##}
+{#setInterval(updateCountdown,1000);#}
+{#function  updateCountdown(){#}
+{#    const minute = Math.floor(time/60);#}
+{#    let second = time % 60;#}
+{##}
+{#    second =second <10? '0' +second :second;#}
+{##}
+{#    countdownEl.innerHTML = `${minute}: ${second} `;#}
+{#    time--;#}
+{##}
+{##}
+const startMinute = 60;
+        let time = startMinute * 60;
+        const countdownEl = document.getElementById("countdown")
+
+        let counter = setInterval(updateCountdown, 1000);
+
+        function updateCountdown() {
+            const minute = Math.floor(time / 60);
+            let second = time % 60;
+
+            second = second < 10 ? '0' + second : second;
+
+            countdownEl.innerHTML = `${minute}: ${second} `;
+            time--;
+
+            if (time <= 0) {
+                showPopup();
+                clearInterval(counter);
+            }
+        }
+
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        document.getElementById("close-button").addEventListener("click", function(){
+            document.getElementById("popup").style.display = "none";
+        })
+
+/****************************************************************************/
+
+
+const mk_lance = document.getElementById("make-lance");
+const lance = document.getElementById("input-value");
+const nome = document.getElementById("u_nome")
+let init_lance = 200;
+let presents_users = [];
+
+// Adiciona um novo usuário ao array de usuários presentes
+function addArray(user) {
+    presents_users.push(user);
+    presents_users.sort(function (x, y) {
+        return x.u_lance - y.u_lance;
+    });
+}
+
+// Procura um usuário pelo nome
+function searchUser(name) {
+    for (let i = 0; i < presents_users.length; i++) {
+        if (name === presents_users[i].name) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Atualiza o valor do lance de um usuário
+function updateUserValue(name, value) {
+    for (let i = 0; i < presents_users.length; i++) {
+        if (name === presents_users[i].name) {
+            presents_users[i].u_lance = value;
+        }
+    }
+}
+
+
+function showPresentsCustomers() {
+    presents_users.sort(function (x, y) {
+        return y.u_lance - x.u_lance;
+    });
+    let listaLance = document.getElementById('lista-lance');
+    listaLance.innerHTML = '';
+    for (let i = 0; i < presents_users.length; i++) {
+        listaLance.innerHTML += `
+            <div class="perfil-lance">
+                <p>${presents_users[i].name} </p>
+                <p class="preco_lance">lance actual: <strong>${presents_users[i].u_lance}</strong></p>
+            </div>
+        `;
+    }
+}
+
+mk_lance.addEventListener('click', () => {
+    let value = lance.value;
+    let name = nome.value;
+    if (value <= init_lance) {
+        alert("The value must be greater then the initial value!");
+    } else {
+        init_lance = value;
+        {#let name = 'name';#}
+        if (searchUser(name)) {
+            updateUserValue(name, value);
+        } else {
+            let newuser = {
+                name: name,
+                u_lance: value
+            };
+            addArray(newuser);
+        }
+        showPresentsCustomers();
+    }
+});
+
+
+    </script>
+
+{% endblock %}

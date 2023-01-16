@@ -3,7 +3,7 @@
 
     <div class="background">
         <nav class="navbar">
-            <img class="logo" src="/static/images/logo2.png" alt="aqui tem logo">
+{#            <a href="{{ url_for('views.Homepage') }}"><img class="logo" src="/static/images/logo2.png" alt="aqui tem logo"></a>#}
             <div class="pesquisa">
                 <input class="srch" type="search" name=" " placeholder="  Search for an event or product">
 
@@ -12,13 +12,26 @@
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
             </div>
-
             <ul class="but">
-                <li><a href="#">Help</a></li>
-                <li><a href="{{ url_for('views.SellPage') }}">Sell</a></li>
-                <li><a href="#">Buy</a></li>
-                <li><a href="{{ url_for('auth.login') }}">login</a></li>
+                {% if user.is_authenticated  %}
+                    <li><a href="{{url_for('views.SellPage')}}">Sell</a> </li>
+                    <li><a href="{{ url_for('views.Auction') }}">Your Auction</a></li>
+                    <li><a href="{{ url_for('views.Homepage') }}">{{  user.nome }}</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+
+                {% else %}
+                    <li><a href="#">Help</a> </li>
+                    <li><a href="{{ url_for('views.SellPage')}}">Sell</a> </li>
+                    <li><a href="#">Buy</a> </li>
+                    <li><a href="{{ url_for('auth.login')}}">Login</a></li>
+                {% endif %}
             </ul>
+{#            <ul class="but">#}
+{#                <li><a href="#">Help</a></li>#}
+{#                <li><a href="{{ url_for('views.SellPage') }}">Sell</a></li>#}
+{#                <li><a href="{{ url_for('views.Auction') }}">Your Auction</a></li>#}
+{#                <li><a href="{{ url_for('auth.login') }}">login</a></li>#}
+{#            </ul>#}
         </nav>
         {#        <---------------------------main------------------------------>#}
         <section class="filtro">
@@ -60,21 +73,45 @@
 
             <div class="rigth">
                 {% for row in minhatab %}
-                    <div class="product">
-                        <div class="imagem_produto">
-                            <button onclick="" id="btnh1" class="btnFavorite"><i class="fas fa-heart"></i></button>
-                            <img class="Imagem_produto" src="static/images/{{ row.image }}" width="300px"
-                                 height="300px">
-                        </div>
-                        <div class="detalhe_produto">
-                            <h2 class="p_name">Name:{{ row.titlu }}</h2>
-                            <h2 class="lance">Pret:{{ row.lance }}</h2>
-                            <h2 class="datalance">Data:{{ row.datalance}}</h2>
-                        </div>
+                    <form>
+                        <div    class="product" data-name="p-1" id="{{ row.id }}">
+                            <div class="imagem_produto" id="id_produto">
+                                <button onclick="" id="btnh1" class="btnFavorite"><i class="fas fa-heart"></i></button>
+                                 <h2 class="p_name">{{ row.titlu }}</h2>
+                            <img class="Imagem_produto" src="static/images/{{ row.image }}" width="300px "
+                                 height="300px" id="id_imagem">
+                            </div>
+                            <div class="detalhe_produto">
+                                <h2 class="lance">RON: {{ row.lance }} </h2>
+                                <h2 class="datalance">Data:{{ row.datalance}} <button type="submit" class="Bdetalhe" id="{{ row.id }}" onclick="showPopup()">Adăugați </button></h2>
+                            </div>
+                         </div>
+                    </form>
 
-                    </div>
                 {% endfor %}
             </div>
+        <div class="popHome" id="popup-1">
+         {% for row in minhatab %}
+                 <form action="{{ url_for('views.Homepage') }}" method="post" class="productes" id="popup-1">
+                <div class="content1" id="{{ row.id }}" >
+                                <span >
+                                    <div class="imagem11">
+                                        <button onclick="" id="btnh1" class="btnFavorite"><i class="fas fa-heart"></i></button>
+                                         <h2 class="p_name">{{ row.titlu }}</h2>
+                                    <img class="Imagem_produto" src="static/images/{{ row.image }}" width="300px"
+                                         height="300px" id="id_imagem">
+                                    </div>
+                                    <div class="detalhe_produto">
+                                        <h1> Id:{{ row.id }}</h1>
+                                         <h2 class="lance">RON: {{ row.lance }} </h2>
+                                        <h2 class="datalance">Data:{{ row.datalance}}</h2>
+                                    </div>
+                                 </span>
+                            </div>
+
+                 </form>
+                {% endfor %}
+             </div>
 
         </section>
         <footer class="footer_body">
@@ -86,5 +123,24 @@
             </h2>
         </footer>
     </div>
+<script>
+
+
+{#function showPopup(){#}
+{#    document.getElementById("popup-1").classList.toggle("active")#}
+{#}#}
+$('.background').click(function(){
+        // Armazena os dados da div clicada em uma variável
+        var divData = $(this).data();
+
+        // Adiciona os dados armazenados na janela de popup
+        $('#popup').append('<p>'+divData.name+': '+divData.value+'</p>');
+
+        // Exibe a janela de popup
+        $('#popup').show();
+    });
+
+</script>
+
 
 {% endblock %}

@@ -6,16 +6,23 @@
     body{
 
     }
-  .pesquisa {
-      margin-left: -50px;
+.pesquisa {
+    margin-left: -50px;
    /*background-color: #2691d9;*/
+}
 
-  }
-  .navbar ul{
-      margin-left: -360px;
-      margin-bottom: -50px;
-  }
-
+.navbar ul{
+    margin-left: -360px;
+    margin-bottom: -50px;
+}
+.navbar ul li{
+    display: flex;
+    background-color:#8bcb35 ;
+    width: 70px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
 }
 .background {
     display: block;
@@ -23,7 +30,7 @@
     width: 100%;
 }
 
-img{
+form img{
     width: 80px;
     height: 80px;
     margin-left: 30px;
@@ -205,25 +212,30 @@ img{
     margin: 10px;
 
 }
-
-
-
-
+.imagem_produto h2{
+    margin-left: 27%;
+}
 .detalhe_produto{
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     height: 30%;
     background-color: #87CEFA;
     width: 300px;
     border-radius: 6px;
-    color: white;
+    color: blue;
 
 }
 .detalhe_produto h1{
-
     margin: 6%;
-
 }
 
+.Bdetalhe{
+    padding: 10px;
+    border-radius: 12px;
+    background-color: white;
+    border: 2px solid #4CAF50;
+}
 
 
 .filtro3 h1{
@@ -259,7 +271,6 @@ img{
 
 
 
-
 .footer_body{
     display: flex;
     flex-direction: column;
@@ -268,4 +279,36 @@ img{
     background-color: #87CEFA;
     color: white;
 }
+-----------------------------
+.popHome.imagem11{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    width: 450px;
+    height: 220px;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.popHome .content1{
+    color: blue;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: grey;
+    width: 450px;
+    height: 220px;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
+.popHome.active .content1{
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%,-50%) scale(1)
+}

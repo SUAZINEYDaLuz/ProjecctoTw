@@ -8,6 +8,7 @@ class tabelalogin(db.Model, UserMixin):
     sobrenome = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+    lance = db.Column(db.String(255))
 
 
 class tabelatw(db.Model, UserMixin):

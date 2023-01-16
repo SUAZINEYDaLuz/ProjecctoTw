@@ -19,7 +19,7 @@ def Homepage():
 @views.route('/sell')
 @login_required
 def SellPage():
-    return render_template("SellPage.html")
+    return render_template("SellPage.html", user = current_user)
 
 def save_images(image1):
     hash_image1 = secrets.token_urlsafe(10)
@@ -34,6 +34,7 @@ def save_images(image1):
 
 
 @views.route('/sell/', methods=['POST'])
+@login_required
 def Send_Data():
     if request.method == 'POST':
         titlu = request.form['titlu']
@@ -43,8 +44,17 @@ def Send_Data():
         image = save_images(request.files.get('image1'))
         lance = request.form['Lance']
         datalance = request.form['dataLeilao']
-
         new_item = tabelatw(titlu=titlu, categoria=categoria, descricao=descricao, email=email,image=image,lance=lance ,datalance = datalance)
         db.session.add(new_item)
         db.session.commit()
     return render_template('Homepage.html')
+
+
+@views.route('/autionpage/', methods=['POST', 'GET'])
+@login_required
+def Auction():
+    data = tabelatw.query.all()
+    user = tabelalogin.query.all()
+    return render_template("AuctionPage.html", user=user, minhatab=data)
+def lista():
+    pass
