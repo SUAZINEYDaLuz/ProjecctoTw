@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% block css %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Profile.css')}}"> {% endblock %}
 {% block body %}
 
     <div class="background">
         <nav class="navbar">
-{#            <a href="{{ url_for('views.Homepage') }}"><img class="logo" src="/static/images/logo2.png" alt="aqui tem logo"></a>#}
+            <a href="{{ url_for('views.Homepage') }}"><img class="logo" src="/static/images/logo2.png" alt="aqui tem logo"></a>
             <div class="pesquisa">
                 <input class="srch" type="search" name=" " placeholder="  Search for an event or product">
 
@@ -16,7 +17,7 @@
                 {% if user.is_authenticated  %}
                     <li><a href="{{url_for('views.SellPage')}}">Sell</a> </li>
                     <li><a href="{{ url_for('views.Auction') }}">Your Auction</a></li>
-                    <li><a href="{{ url_for('views.Homepage') }}">{{  user.nome }}</a></li>
+                    <li><a href="{{ url_for('views.profile') }}">{{  user.nome }}</a></li>
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
 
                 {% else %}
@@ -74,44 +75,43 @@
             <div class="rigth">
                 {% for row in minhatab %}
                     <form>
-                        <div    class="product" data-name="p-1" id="{{ row.id }}">
+                        <div class="product" data-name="p-1" id="{{ row.id }}">
                             <div class="imagem_produto" id="id_produto">
                                 <button onclick="" id="btnh1" class="btnFavorite"><i class="fas fa-heart"></i></button>
-                                 <h2 class="p_name">{{ row.titlu }}</h2>
+
                             <img class="Imagem_produto" src="static/images/{{ row.image }}" width="300px "
                                  height="300px" id="id_imagem">
                             </div>
                             <div class="detalhe_produto">
-                                <h2 class="lance">RON: {{ row.lance }} </h2>
-                                <h2 class="datalance">Data:{{ row.datalance}} <button type="submit" class="Bdetalhe" id="{{ row.id }}" onclick="showPopup()">Adăugați </button></h2>
+                                <h2 class="p_name">Nome: {{ row.titlu }}</h2>
+                                <h2 class="lance">Pret:  {{ row.lance }}  RON</h2>
+                                <h2 class="datalance"> <button type="submit" class="Bdetalhe" id="{{ row.id }}" onclick="showPopup()">Adăugați </button></h2>
                             </div>
                          </div>
                     </form>
 
                 {% endfor %}
             </div>
-        <div class="popHome" id="popup-1">
-         {% for row in minhatab %}
-                 <form action="{{ url_for('views.Homepage') }}" method="post" class="productes" id="popup-1">
-                <div class="content1" id="{{ row.id }}" >
-                                <span >
-                                    <div class="imagem11">
-                                        <button onclick="" id="btnh1" class="btnFavorite"><i class="fas fa-heart"></i></button>
-                                         <h2 class="p_name">{{ row.titlu }}</h2>
-                                    <img class="Imagem_produto" src="static/images/{{ row.image }}" width="300px"
-                                         height="300px" id="id_imagem">
-                                    </div>
-                                    <div class="detalhe_produto">
-                                        <h1> Id:{{ row.id }}</h1>
-                                         <h2 class="lance">RON: {{ row.lance }} </h2>
-                                        <h2 class="datalance">Data:{{ row.datalance}}</h2>
-                                    </div>
-                                 </span>
-                            </div>
-
-                 </form>
-                {% endfor %}
-             </div>
+{#        <div class="popHome" id="popup-1">#}
+{#          <form method="post" class="productes" id="popup-1">#}
+{#         {% for row in minhatab %}#}
+{#             <div class="content1" id="{{ row.id }}" >#}
+{#                 <span >#}
+{#                     <div class="imagem11">#}
+{#                         <button onclick="" id="btnh1" class="btnFavorite"><i class="fas fa-heart"></i></button>#}
+{#                         <h2 class="p_name">{{ row.titlu }}</h2>#}
+{#                         <img class="Imagem_produto" src="static/images/{{ row.image }}" width="300px" height="300px" id="id_imagem">#}
+{#                     </div>#}
+{#                     <div class="detalhe_produto">#}
+{#                         <h1> Id:{{ row.id }}</h1>#}
+{#                         <h2 class="lance">RON: {{ row.lance }} </h2>#}
+{#                         <h2 class="datalance">Data:{{ row.datalance}}</h2>#}
+{#                     </div>#}
+{#                 </span>#}
+{#             </div>#}
+{#                {% endfor %}#}
+{#          </form>#}
+{#             </div>#}
 
         </section>
         <footer class="footer_body">
