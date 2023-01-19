@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+    <section id="container-update">
+    <form action="{{ url_for('views.update', id=product.id) }}" method="POST" class="total">
+{#        <form action="{{ url_for('views.update', product.id) }}" method="post">#}
+{#        <form action="{{ url_for('views.update', id=product.id) }}" method="POST" enctype="multipart/form-data" class="editform">#}
+{#            #}
+{#        </form>#}
+        <form method="POST" class="space">
+            <input name="id" type="number" value="{{ product.id }}" hidden="hidden" >
+            <input name="titlu" type="text" value="{{ product.titlu }}" class="todo">
+{#            <input name="titlu"type="text" value="{{ product.categoria }}">#}
+            <div class="todo1">
+                <select name="categoria" id="format">
+                    <option>{{ product.categoria }}</option>
+                    <option value="Eletronice"> Eletronice</option>
+                    <option value="Piese auto"> Piese auto</option>
+                    <option value="Sport Timp Liber"> Sport Timp Liber</option>
+                    <option value="Auto si Moto"> Auto si Moto</option>
+                    <option value="Animalele de Companie"> Animalele de Companie</option>
+                    <option value="Moda si Frumosete"> Moda si Frumosete</option>
+                </select>
+            </div>
+            <textarea style="height:auto" name="descricao" type="text" class="todo2">{{ product.descricao }}</textarea>
+{#            <input name="descricao" type="text" value="{{ product.descricao }}" class="todo2">#}
+            <button class="todo3" name="image1" id="sabe-btn" type="submit">Save modifications</button>
+        </form>
+        <form action="{{ url_for('views.update', id=product.id) }}" method="post">
+            <div class="form-group">
+                <img id="image-back" class="imagem" src="{{url_for('static', filename='images/' + product.image)}}" alt="">
+{#                <input onchange="getimage(event)" class="upload_image" id="upload_costum" type="file" name="image1" accept="image/*">#}
+            </div>
+        </form>
+    </form>
+    </section>
+{% endblock %}

@@ -1,0 +1,84 @@
+
+#container-update{
+    width: 70%;
+    height:90vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 5px solid #87CEFA;
+    margin-left: 17%;
+    flex-direction: row;
+    font-family: "Poppins", sans-serif;
+}
+
+#container-update form{
+    width: 500px;
+    height: 600px;
+    /*background: black;*/
+    display: flex;
+    flex-direction: column;
+}
+
+#container-update form input{
+    background-color: white;
+    width: 100%;
+    height: 35px;
+    padding: 10px;
+}
+
+.imagem{
+    height: 350px;
+    width: 350px;
+    border-radius: 25px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+}
+
+#container-update .todo{
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
+    font-size: 15px;
+    color: #929292;
+    padding: 7px;
+    margin-top: 5mm;
+}
+
+#format{
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
+    font-size: 15px;
+    color: #929292;
+    padding: 7px;
+    margin-top: 9mm;
+}
+
+#container-update .todo2{
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
+    font-size: 15px;
+    color: #929292;
+    padding: 7px;
+    margin-top: 9mm;
+}
+
+#container-update .todo3{
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
+    font-size: 15px;
+    color: #929292;
+    padding: 7px;
+    margin-top: 9mm;
+}
+
+.todo3:hover{
+    background-color: #87CEFA;
+    color: black;
+}

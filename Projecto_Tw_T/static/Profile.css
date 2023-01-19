@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.backgrounds {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.backgrounds .containeres{
+   display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+
+}
+.backgrounds .containeres .product-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 90%;
+
+}
+
+.productes{
+    margin: 10px;
+    height: 500px;
+    width: 300px;
+    border-radius: 15px;
+    display: flex;
+    border: 1px solid black;
+    flex-wrap:wrap ;
+    justify-content: space-around;
+}
+.productes .btns button{
+    color: black;
+}
+
+/*.productes .btns a{*/
+/*    text-decoration: none;*/
+/*}*/
+.productes .btns .edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 50px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    transition: .3s ease-in-out;
+}
+
+.productes .btns .edit:hover{
+    background-color: #87CEFA;
+    color: black;
+}

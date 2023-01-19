@@ -2,7 +2,7 @@
 {% block body %}
     <div class="background">
         <nav class="navbar">
-{#            <a href="{{ url_for('views.Homepage') }}"><img class="logo" src="/static/images/logo2.png" alt="aqui tem logo"></a>#}
+            <a href="{{ url_for('views.Homepage') }}"><img class="logo" src="/static/images/logo2.png" alt="aqui tem logo"></a>
             <div class="pesquisa">
                 <input class="srch" type="search" name=" " placeholder="  Search for an event or product">
 
@@ -49,7 +49,7 @@
                     <h2>Imagini</h2>
                     <p>Aceasta va fi imaginea principală a anunțului tău. Glisează și fixează imaginile în ordinea
                         dorită.</p>
-                    <i class="fa-solid fa-upload"><input class="upload_image" id="upload_costum" type="file" name="image1" accept="image/*"></i>
+                    <input id="upload_costum" type="file" name="image1" accept="image/*">
                     <label for="upload_costum" class="upload_label">
                         <i class="fas fa-cloud-upload-alt"></i>
                         <!--                    <p class="drag_tex">Drag & Drop To Upload File</p>-->

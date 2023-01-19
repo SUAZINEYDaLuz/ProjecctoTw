@@ -1,14 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div class="jjd">
-        <h1> Perfil</h1>
+{% extends "base.html" %}
+{% block body %}
+<div class="backgrounds">
+    <nav class="navbar">
+       <a href="{{ url_for('views.Homepage') }}"><img class="logo" src="/static/images/logo2.png" alt="aqui tem logo"></a>
 
-    </div>
+        <ul class="but">
+            {% if user.is_authenticated %}
+                <li><a href="{{ url_for('views.SellPage') }}">Sell</a></li>
+                <li><a href="{{ url_for('views.profile') }}"></a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
 
-</body>
-</html>
+            {% else %}
+                <li><a href="#">Help</a></li>
+                <li><a href="{{ url_for('views.SellPage') }}">Sell</a></li>
+                <li><a href="#">Buy</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+      <div class="containeres" >
+        <div id="product-container" class="product-container">
+            {% for row in minhatab %}
+                <form action="{{ url_for('views.edit') }}" method="post" class="productes" id="{{ row.id }}">
+                    <input name="id" type="number" value="{{ row.id }}" hidden="hidden">
+                    <div class="imagem_produto" id="imagem_produto">
+                        <img class="Imagem_produto" src="static/images/{{row.image}}" width="300px" height="300px" alt="">
+                        <div class="btns" id="btns">
+                            <button type="submit" class="edit">Edit</button>
+                            <a class="edit" href="/delete/{{ row.id }}">Delete</a>
+                        </div>
+                    </div>
+                    <div class="detalhe_produto">
+                        <h1 class="p_name">{{row.titlu}}</h1>
+                        <h1 class="p_price">{{ row.descricao }}</h1>
+                    </div>
+                </form>
+            {% endfor %}
+       </div>
+      </div>
+</div>
+
+{% endblock %}
